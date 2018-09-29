@@ -7,10 +7,11 @@
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import Contentwrapper from 'components/Contentwrapper/Loadable';
+// import { Tabs, DatePicker } from 'antd';
+
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 const { Sider } = Layout;
-const { SubMenu } = Menu;
 
 /* eslint-disable react/prefer-stateless-function */
 class Sidebar extends React.Component {
@@ -21,54 +22,29 @@ class Sidebar extends React.Component {
           <Menu
             mode="inline"
             defaultSelectedKeys={['1']}
-            // defaultOpenKeys={['sub1']}
+            defaultOpenKeys={['sub1']}
             style={{ height: '100%', borderRight: 0 }}
           >
-            <Menu.Item
-              key="1"
-              title={
-                <span>
-                  <Icon type="bar-chart" theme="outlined" />Max Mustermann
-                </span>
-              }
-            >
-              nav 1
+            <Menu.Item key="1">
+              <span>
+                <Icon type="bar-chart" theme="outlined" />Max Mustermman
+              </span>
             </Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
-            <SubMenu
-              key="sub1"
-              title={
-                <span>
-                  <Icon type="bar-chart" theme="outlined" />Max Mustermann
-                </span>
-              }
-            />
-            <SubMenu
-              key="sub2"
-              title={
-                <span>
-                  <Icon type="bar-chart" theme="outlined" />Goldanlage Kurrzeit
-                </span>
-              }
-            />
-            <SubMenu
-              key="sub3"
-              title={
-                <span>
-                  <Icon type="bar-chart" theme="outlined" />BGK+ (mit 999
-                  Option)
-                </span>
-              }
-            />
-            <SubMenu
-              key="sub3"
-              title={
-                <span>
-                  <Icon type="bar-chart" theme="outlined" />Direkt Goldauf
-                </span>
-              }
-            />
+            <Menu.Item key="2">
+              <span>
+                <Icon type="bar-chart" theme="outlined" />Goldenalage Kurreit
+              </span>
+            </Menu.Item>
+            <Menu.Item key="3">
+              <span>
+                <Icon type="bar-chart" theme="outlined" />BGK+(mit 99 option)
+              </span>
+            </Menu.Item>
+            <Menu.Item key="4">
+              <span>
+                <Icon type="bar-chart" theme="outlined" />Direkt Goldauf
+              </span>
+            </Menu.Item>
           </Menu>
         </Sider>
         <Contentwrapper />

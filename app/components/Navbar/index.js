@@ -7,33 +7,61 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
-import { Layout, Menu, Dropdown, Button, Icon, message } from 'antd';
+import { Layout, Menu, Dropdown, Button, Icon } from 'antd';
+// import MenuButton from '../MenuButton/index';
+import BtnFrom from '../MenuButton/Loadable';
+
 const { Header } = Layout;
 
 /* eslint-disable react/prefer-stateless-function */
 class Navbar extends React.Component {
-  handleButtonClick = e => {
-    message.info('Click on left button.');
-    console.log('click left button', e);
+  constructor(props) {
+    super(props);
+    this.state = { visible: false };
+  }
+
+  showModal = () => {
+    this.setState(
+      {
+        visible: true,
+      },
+      () => console.log(this.state),
+    );
   };
 
-  handleMenuClick = e => {
-    message.info('Click on menu item.');
-    console.log('click', e);
+  handleOk = e => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
   };
+
+  handleCancel = e => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  };
+  // handleButtonClick = e => {
+  //   message.info('Click on left button.');
+  //   console.log('click left button', e);
+  // };
+
+  // handleMenuClick = e => {
+  //   message.info('Click on menu item.');
+  //   console.log('click', e);
+  // };
 
   render() {
     const menu = (
-      <Menu onClick={this.handleMenuClick}>
+      <Menu>
         <Menu.Item key="1">
-          <Button style={{ marginLeft: 8 }}>
-            Button <Icon type="down" />
+          <Button style={{ marginLeft: 8 }} onClick={this.showModal}>
+            click me
           </Button>
         </Menu.Item>
         <Menu.Item key="2">
-          <Button style={{ marginLeft: 8 }}>
-            Button <Icon type="down" />
-          </Button>
+          <Button style={{ marginLeft: 8 }}>Button</Button>
         </Menu.Item>
       </Menu>
     );
@@ -52,6 +80,11 @@ class Navbar extends React.Component {
             <Menu.Item>Goldpreis-GmbH</Menu.Item>
           </Menu>
         </Header>
+        <BtnFrom
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+        />
       </Layout>
     );
   }
