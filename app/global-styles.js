@@ -99,5 +99,18 @@ injectGlobal`
     background: #00A0E9;
     padding: 5px 0;
   }
+  .Btn{
+    margin-top:20px;
+  }
+
+  .Output{
+    margin-top:30px;
+    width:100%;
+  }
+
+  .m-l-10{
+    margin-left:10px
+  }
+  
   
 `;

@@ -1,29 +1,28 @@
-/**
- *
- * App.js
- *
- * This component is the skeleton around the actual pages, and should only
- * contain code that should be seen on all pages. (e.g. navigation bar)
- *
- * NOTE: while this component should technically be a stateless functional
- * component (SFC), hot reloading does not currently support SFCs. If hot
- * reloading is not a necessity for you then you can refactor it and remove
- * the linting exception.
- */
-
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { Layout } from 'antd';
 
-import HomePage from 'containers/HomePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import FirstLayout from 'containers/FirstLayout/Loadable';
+import SecondLayout from 'containers/SecondLayout/Loadable';
+import ThirdLayout from 'containers/ThirdLayout/Loadable';
+
+import NotFoundPage from '../NotFoundPage/Loadable';
+import Navbar from '../../components/Navbar/Loadable';
+import Sidebar from '../../components/Sidebar/Loadable';
 
 export default function App() {
   return (
     <div>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route component={NotFoundPage} />
-      </Switch>
+      <Navbar />
+      <Layout style={{ width: '100%' }}>
+        <Sidebar />
+        <Switch>
+          <Route path="/layout1" component={FirstLayout} />
+          <Route path="/layout2" component={SecondLayout} />
+          <Route path="/layout3" component={ThirdLayout} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </Layout>
     </div>
   );
 }

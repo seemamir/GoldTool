@@ -7,9 +7,9 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
-import { Layout, Menu, Dropdown, Button, Icon } from 'antd';
-// import MenuButton from '../MenuButton/index';
-import BtnFrom from '../MenuButton/Loadable';
+import { Layout, Menu, Input } from 'antd';
+// import MenuItem from 'antd/lib/menu/MenuItem';
+import Logo from '../../images/footer.png';
 
 const { Header } = Layout;
 
@@ -53,18 +53,18 @@ class Navbar extends React.Component {
   // };
 
   render() {
-    const menu = (
-      <Menu>
-        <Menu.Item key="1">
-          <Button style={{ marginLeft: 8 }} onClick={this.showModal}>
-            click me
-          </Button>
-        </Menu.Item>
-        <Menu.Item key="2">
-          <Button style={{ marginLeft: 8 }}>Button</Button>
-        </Menu.Item>
-      </Menu>
-    );
+    // const menu = (
+    //   <Menu>
+    //     <Menu.Item key="1">
+    //       <Button style={{ marginLeft: 8 }} onClick={this.showModal}>
+    //         click me
+    //       </Button>
+    //     </Menu.Item>
+    //     <Menu.Item key="2">
+    //       <Button style={{ marginLeft: 8 }}>Button</Button>
+    //     </Menu.Item>
+    //   </Menu>
+    // );
     return (
       <Layout>
         <Header>
@@ -74,17 +74,12 @@ class Navbar extends React.Component {
             defaultSelectedKeys={['2']}
             style={{ lineHeight: '64px' }}
           >
-            <Dropdown overlay={menu}>
-              <Icon type="bars" theme="outlined" className="icon" />
-            </Dropdown>
-            <Menu.Item>Goldpreis-GmbH</Menu.Item>
+            <Input placeholder="Input Area" />
+            <Menu.Item>
+              <img src={Logo} alt="" />
+            </Menu.Item>
           </Menu>
         </Header>
-        <BtnFrom
-          visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-        />
       </Layout>
     );
   }

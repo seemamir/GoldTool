@@ -4,10 +4,15 @@
  *
  */
 import React from 'react';
+// import { Switch, Route } from 'react-router-dom';
 import { Layout } from 'antd';
-import InputContent from 'components/InputContent/Loadable';
-import Layout1 from 'components/Layout1/Loadable';
-import Layout2 from 'components/Layout2/Loadable';
+// import InputForm from 'components/InputForm/Loadable';
+import Layout3 from '../InputContent/Loadable';
+// import Layout1 from '../Layout1/Loadable';
+import Layout2 from '../Layout2/Loadable';
+
+// import Layout1 from 'components/Layout1/Loadable';
+// import Layout2 from 'components/Layout2/Loadable';
 
 const { Content } = Layout;
 const Contentwrapper = () => (
@@ -19,11 +24,7 @@ const Contentwrapper = () => (
         margin: 0,
         minHeight: 280,
       }}
-    >
-      <InputContent />
-      <Layout1 />
-      <Layout2 />
-    </Content>
+    />
   </Layout>
 );
 
