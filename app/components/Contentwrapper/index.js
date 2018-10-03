@@ -7,7 +7,7 @@ import React from 'react';
 // import { Switch, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 // import InputForm from 'components/InputForm/Loadable';
-import Layout3 from '../InputContent/Loadable';
+import Layout3 from '../Layout3/Loadable';
 // import Layout1 from '../Layout1/Loadable';
 import Layout2 from '../Layout2/Loadable';
 
