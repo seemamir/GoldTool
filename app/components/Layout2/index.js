@@ -33,12 +33,13 @@ class Layout2 extends React.Component {
     };
   }
 
-  handleEuro = e => {
-    const { value } = e.target;
+  handleEuro = (rule, value, callback) => {
+    // const { form } = this.props;
     if (value < 1000) {
-      this.setState({
-        euroError: 'Price must greater than zero!',
-      });
+      // this.setState({
+      //   euroError: 'Price must greater than zero!',
+      // });
+      callback('Amount too low');
     }
   };
 
@@ -57,7 +58,7 @@ class Layout2 extends React.Component {
                       message: 'Please enter Euro amount',
                     },
                     {
-                      validator: this.state.euroError,
+                      validator: this.handleEuro,
                     },
                   ],
                 })(

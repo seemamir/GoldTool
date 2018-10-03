@@ -113,5 +113,15 @@ injectGlobal`
     margin-top:30px;
     margin-bottom:30px;
   }
+  .has-error .ant-input:focus{
+    border-color:none;
+    box-shadow:none;
+  }
+  .has-error .ant-input:not([disabled]):hover{
+    border-color:none;
+  }
+  // .ant-menu-item .anticon, .ant-menu-submenu-title .anticon{
+  //   font-size:50px;
+  // }
   
 `;
