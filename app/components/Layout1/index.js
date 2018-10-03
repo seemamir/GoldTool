@@ -34,10 +34,15 @@ class Layout1 extends React.Component {
   }
 
   handleEuro = (rule, value, callback) => {
+    // const { form } = this.props;
     if (value < 1000) {
+      // this.setState({
+      //   euroError: 'Price must greater than zero!',
+      // });
       callback('Amount too low');
     }
   };
+  getValue = () => {};
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -86,27 +91,26 @@ class Layout1 extends React.Component {
               </FormItem>
             </Col>
           </Row>
+          <Row className="m-v-30">
+            <Col span={2}>
+              <h3>Text Here</h3>
+            </Col>
+            <Col span={14}>
+              <Button className="m-l-10" type="primary">
+                0
+              </Button>
+              <Button className="m-l-10" type="primary">
+                25
+              </Button>
+              <Button className="m-l-10" type="primary">
+                50
+              </Button>
+              <Button className="m-l-10" type="primary">
+                75
+              </Button>
+            </Col>
+          </Row>
         </Form>
-
-        <Row className="m-v-30">
-          <Col span={2}>
-            <h3>Text Here</h3>
-          </Col>
-          <Col span={14}>
-            <Button className="m-l-10" type="primary">
-              0
-            </Button>
-            <Button className="m-l-10" type="primary">
-              25
-            </Button>
-            <Button className="m-l-10" type="primary">
-              50
-            </Button>
-            <Button className="m-l-10" type="primary">
-              75
-            </Button>
-          </Col>
-        </Row>
 
         <Row className="m-v-30">
           <Col span={2}>

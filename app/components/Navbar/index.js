@@ -7,10 +7,9 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
-import { Layout, Menu, Input, Icon } from 'antd';
+import { Layout, Menu, Input } from 'antd';
 // import MenuItem from 'antd/lib/menu/MenuItem';
 import Logo from '../../images/footer.png';
-import MenuItem from 'antd/lib/menu/MenuItem';
 
 const { Header } = Layout;
 
@@ -54,6 +53,9 @@ class Navbar extends React.Component {
             defaultSelectedKeys={['2']}
             style={{ lineHeight: '64px' }}
           >
+            <Menu.Item key="input">
+              <Input placeholder="Input Area" />
+            </Menu.Item>
             <Menu.Item key="logo">
               <img src={Logo} alt="" />
             </Menu.Item>
