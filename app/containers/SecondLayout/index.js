@@ -2,19 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { Layout } from 'antd';
-import Contentwrapper from 'components/Contentwrapper/Loadable';
-import Layout2 from 'components/Layout2/loadable';
+import Layout2 from '../../components/Layout2/Loadable';
 import makeSelectSecondLayout from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 const { Content } = Layout;
 
 /* eslint-disable react/prefer-stateless-function */

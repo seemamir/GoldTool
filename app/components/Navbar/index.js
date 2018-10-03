@@ -54,11 +54,6 @@ class Navbar extends React.Component {
             defaultSelectedKeys={['2']}
             style={{ lineHeight: '64px' }}
           >
-            <MenuItem>
-              <Icon className="Icon" type="align-left" theme="outlined" />
-            </MenuItem>
-            {/* <Input placeholder="Input Area" /> */}
-
             <Menu.Item key="logo">
               <img src={Logo} alt="" />
             </Menu.Item>

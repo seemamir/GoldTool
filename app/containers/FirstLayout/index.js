@@ -14,7 +14,7 @@ import { Layout } from 'antd';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 
-import Layout2 from '../../components/Layout2/Loadable';
+import Layout1 from '../../components/Layout1/Loadable';
 
 import makeSelectFirstLayout from './selectors';
 import reducer from './reducer';
@@ -39,7 +39,7 @@ export class FirstLayout extends React.Component {
               minHeight: 280,
             }}
           >
-            <Layout2 />
+            <Layout1 />
           </Content>
         </Layout>
       </div>

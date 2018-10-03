@@ -14,7 +14,7 @@ import { compose } from 'redux';
 import { Layout } from 'antd';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import Layout3 from '../../components/InputContent/Loadable';
+import Layout3 from '../../components/Layout3/Loadable';
 import makeSelectThirdLayout from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -49,9 +49,7 @@ export class ThirdLayout extends React.Component {
   }
 }
 
-ThirdLayout.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-};
+ThirdLayout.propTypes = {};
 
 const mapStateToProps = createStructuredSelector({
   thirdlayout: makeSelectThirdLayout(),

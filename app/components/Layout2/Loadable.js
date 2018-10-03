@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for Layout2
+ * Asynchronously loads the component for Layout1
  *
  */
 

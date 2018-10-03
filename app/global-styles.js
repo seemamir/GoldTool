@@ -120,8 +120,5 @@ injectGlobal`
   .has-error .ant-input:not([disabled]):hover{
     border-color:none;
   }
-  // .ant-menu-item .anticon, .ant-menu-submenu-title .anticon{
-  //   font-size:50px;
-  // }
   
 `;
