@@ -5,6 +5,7 @@ const Msg = props => (
   <div>
     <Modal
       visible={props.visible}
+      onCancel={props.cancel}
       footer={[
         <Button key="back" onClick={props.cancel}>
           Bestaetigen

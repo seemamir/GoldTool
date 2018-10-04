@@ -3,6 +3,7 @@ import moment from 'moment';
 import { Bar, Line } from 'react-chartjs-2';
 import { Input, Checkbox, DatePicker, Form, Row, Col, Button } from 'antd';
 import Msg from './modal';
+import PdfModal from './pdfModal';
 const FormItem = Form.Item;
 const data = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -31,6 +32,7 @@ class Layout2 extends React.Component {
       euroError: '',
       visible: false,
       output: '',
+      open: false,
     };
   }
   handleEuro = (rule, value, callback) => {
@@ -56,6 +58,17 @@ class Layout2 extends React.Component {
     });
   };
   getOutput = () => {};
+
+  handlePopup = () => {
+    this.setState({
+      open: true,
+    });
+  };
+  handleDisagree = () => {
+    this.setState({
+      open: false,
+    });
+  };
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
@@ -152,12 +165,23 @@ class Layout2 extends React.Component {
             </Col>
           </Row>
           <Row className="m-v-30">
-            <Button type="primary">Export to PDF</Button>
-            <Button className="m-l-10" type="primary">
+            <Button type="primary" onClick={this.handlePopup}>
+              Export to PDF
+            </Button>
+            <Button
+              className="m-l-10"
+              type="primary"
+              onClick={this.handlePopup}
+            >
               Export to PDF
             </Button>
           </Row>
           <Msg visible={this.state.visible} cancel={this.handleCancel} />
+          <PdfModal
+            visible={this.state.open}
+            agree={this.handleAgree}
+            disagree={this.handleDisagree}
+          />
         </Form>
       </div>
     );
