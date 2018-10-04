@@ -7,13 +7,20 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
-import { Layout, Menu, Input } from 'antd';
+import { Layout, Menu, Input, Dropdown, Icon } from 'antd';
 // import MenuItem from 'antd/lib/menu/MenuItem';
 import Logo from '../../images/footer.png';
 
 const { Header } = Layout;
 
 /* eslint-disable react/prefer-stateless-function */
+const menu = (
+  <Menu>
+    <Menu.Item>
+      <Input placeholder="Input Area" />
+    </Menu.Item>
+  </Menu>
+);
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
@@ -53,8 +60,10 @@ class Navbar extends React.Component {
             defaultSelectedKeys={['2']}
             style={{ lineHeight: '64px' }}
           >
-            <Menu.Item key="input">
-              <Input placeholder="Input Area" />
+            <Menu.Item>
+              <Dropdown overlay={menu}>
+                <Icon className="icon" type="align-left" />
+              </Dropdown>
             </Menu.Item>
             <Menu.Item key="logo">
               <img src={Logo} alt="" />

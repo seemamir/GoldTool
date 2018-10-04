@@ -32,7 +32,7 @@ injectGlobal`
   }
   .icon{
     color:white;
-    font-size:35px;
+    font-size:50;
   }
 
   .ant-layout-has-sider{
@@ -120,5 +120,12 @@ injectGlobal`
   .has-error .ant-input:not([disabled]):hover{
     border-color:none;
   }
-  
+  .ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected:active{
+    background-color: none;
+    border-color:black;
+}
+.input{
+  backgroung-color:none;
+  box-shadow:none;
+}
 `;
