@@ -5,10 +5,10 @@ import { Input, Checkbox, DatePicker, Form, Row, Col, Button } from 'antd';
 const FormItem = Form.Item;
 
 const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: ['past', 'present', 'future'],
   datasets: [
     {
-      label: 'My First dataset',
+      label: 'Gold price',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: [10, 30, 50, 95, 20, 30, 45],
