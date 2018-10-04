@@ -17,7 +17,6 @@ const MsgLayout3 = props => (
     >
       <p>Hello World</p>
     </Modal>
-    ); export default PdfModal;
   </div>
 );
 

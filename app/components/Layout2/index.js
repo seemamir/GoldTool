@@ -31,8 +31,8 @@ class Layout2 extends React.Component {
     this.state = {
       euroError: '',
       visible: false,
-      output: '',
       open: false,
+      output: '',
     };
   }
   handleEuro = (rule, value, callback) => {
@@ -57,7 +57,18 @@ class Layout2 extends React.Component {
       visible: false,
     });
   };
-  getOutput = () => {};
+  getOutput = e => {
+    const { form } = this.props;
+    const euro = form.getFieldValue('euro');
+    const time = form.getFieldValue('time');
+    console.log(euro !== undefined && euro >= 1000);
+    if (euro !== undefined && euro >= 1000 && time !== undefined && time >= 4) {
+      const output = euro * time;
+      this.setState({
+        output,
+      });
+    }
+  };
 
   handlePopup = () => {
     this.setState({
@@ -73,7 +84,7 @@ class Layout2 extends React.Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <div>
-        <Form onSubmit={handleSubmit} hideRequiredMark="false">
+        <Form onSubmit={handleSubmit} hideRequiredMark={false}>
           <Row>
             <Col span={6}>
               <FormItem label="Amount in Euro">
@@ -91,6 +102,7 @@ class Layout2 extends React.Component {
                   <Input
                     className="example-input"
                     placeholder="Amount in Euro"
+                    onChange={this.getOutput}
                   />,
                 )}
               </FormItem>
@@ -107,7 +119,9 @@ class Layout2 extends React.Component {
                       validator: this.handleTime,
                     },
                   ],
-                })(<Input className="example-input" />)}
+                })(
+                  <Input className="example-input" onChange={this.getOutput} />,
+                )}
               </FormItem>
             </Col>
             <Col span={6}>
