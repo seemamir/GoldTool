@@ -7,8 +7,9 @@ import SecondLayout from 'containers/SecondLayout/Loadable';
 import ThirdLayout from 'containers/ThirdLayout/Loadable';
 
 import NotFoundPage from '../NotFoundPage/Loadable';
-import Navbar from '../../components/Navbar/Loadable';
+// import Navbar from '../../components/Navbar/Loadable';
 import Sidebar from '../../components/Sidebar/Loadable';
+import Navbar from '../Header/Loadable';
 
 export default function App() {
   return (

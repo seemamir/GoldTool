@@ -1,17 +1,28 @@
+/**
+ *
+ * Header
+ *
+ */
+
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
 
 import { Layout, Menu, Input, Icon } from 'antd';
+import injectSaga from 'utils/injectSaga';
+import injectReducer from 'utils/injectReducer';
+import makeSelectHeader from './selectors';
+import reducer from './reducer';
+import saga from './saga';
 import Logo from '../../images/footer.png';
+import { inflationValue } from './actions';
 
 const { Header } = Layout;
 
 /* eslint-disable react/prefer-stateless-function */
-const menu = (
-  <div>
-    <Input placeholder="Input Area" />
-  </div>
-);
-class Navbar extends React.Component {
+export class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,11 +38,13 @@ class Navbar extends React.Component {
   };
 
   handleChange = e => {
-    this.setState({
-      inflation: e.target.value,
-    });
+    this.setState(
+      {
+        inflation: e.target.value,
+      },
+      () => this.props.inflationValue(this.state.inflation),
+    );
   };
-
   render() {
     return (
       <Layout>
@@ -63,6 +76,29 @@ class Navbar extends React.Component {
   }
 }
 
-Header.propTypes = {};
+Navbar.propTypes = {};
 
-export default Navbar;
+const mapStateToProps = createStructuredSelector({
+  header: makeSelectHeader(),
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+    inflationValue: payload => dispatch(inflationValue(payload)),
+  };
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+const withReducer = injectReducer({ key: 'header', reducer });
+const withSaga = injectSaga({ key: 'header', saga });
+
+export default compose(
+  withReducer,
+  withSaga,
+  withConnect,
+)(Navbar);
