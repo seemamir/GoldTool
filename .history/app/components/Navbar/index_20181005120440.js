@@ -1,6 +1,10 @@
-import React from 'react';
 
+
+import React from 'react';
+// import PropTypes from 'prop-types';
+// import styled from 'styled-components';
 import { Layout, Menu, Input, Button, Icon } from 'antd';
+// import MenuItem from 'antd/lib/menu/MenuItem';
 import Logo from '../../images/footer.png';
 
 const { Header } = Layout;
@@ -38,11 +42,10 @@ class Navbar extends React.Component {
           <Menu
             className="input_menu"
             theme="dark"
-            style={{ visibility: !this.state.visible ? 'hidden' : 'visible' }}
+            inlineCollapsed={this.state.visible}
           >
             <Menu.Item key="1">
-              <Input placeholder="Infaltion" />
-            </Menu.Item>
+              <inpu         </Menu.Item>
           </Menu>
 
           <img src={Logo} alt="Logo" />

@@ -1,6 +1,14 @@
-import React from 'react';
+/**
+ *
+ * Header
+ *
+ */
 
+import React from 'react';
+// import PropTypes from 'prop-types';
+// import styled from 'styled-components';
 import { Layout, Menu, Input, Button, Icon } from 'antd';
+// import MenuItem from 'antd/lib/menu/MenuItem';
 import Logo from '../../images/footer.png';
 
 const { Header } = Layout;
@@ -17,7 +25,7 @@ class Navbar extends React.Component {
     this.state = { visible: false };
   }
 
-  toggleCollapsed = () => {
+  showModal = () => {
     this.setState(
       {
         visible: !this.state.visible,
@@ -31,21 +39,32 @@ class Navbar extends React.Component {
       <Layout>
         <Header>
           <Icon
-            type={this.state.visible ? 'menu-unfold' : 'menu-fold'}
+            type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
             onClick={this.toggleCollapsed}
-            style={{ marginRight: '30px', color: 'white', fontSize: '22px' }}
           />
           <Menu
-            className="input_menu"
+            defaultSelectedKeys={['1']}
+            defaultOpenKeys={['1']}
+            mode="inline"
             theme="dark"
-            style={{ visibility: !this.state.visible ? 'hidden' : 'visible' }}
+            inlineCollapsed={this.state.collapsed}
           >
             <Menu.Item key="1">
-              <Input placeholder="Infaltion" />
+              <Icon type="pie-chart" />
+              <span>Option 1</span>
             </Menu.Item>
           </Menu>
-
-          <img src={Logo} alt="Logo" />
+          {/* <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={['2']}
+            style={{ lineHeight: '64px' }}
+          >
+            <Menu.Item>
+            </Menu.Item>
+            <Menu.Item key="logo" />
+          </Menu> */}
+          <img src={Logo} alt="" />
         </Header>
       </Layout>
     );

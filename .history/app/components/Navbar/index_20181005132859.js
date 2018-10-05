@@ -36,8 +36,9 @@ class Navbar extends React.Component {
             style={{ marginRight: '30px', color: 'white', fontSize: '22px' }}
           />
           <Menu
-            className="input_menu"
+            className="input_men"
             theme="dark"
+            inlineCollapsed={this.state.visible}
             style={{ visibility: !this.state.visible ? 'hidden' : 'visible' }}
           >
             <Menu.Item key="1">

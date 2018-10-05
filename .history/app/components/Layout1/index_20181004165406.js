@@ -22,8 +22,6 @@ class Layout1 extends React.Component {
     this.state = {
       timeInYears: 1,
       output: '',
-      startDate: moment(),
-      endDate: moment(),
     };
   }
 
@@ -37,36 +35,8 @@ class Layout1 extends React.Component {
     const { form } = this.props;
     const euro = form.getFieldValue('euro');
     const output = euro * this.state.timeInYears + Number(e.target.value);
-    if (euro !== undefined) {
-      this.setState({
-        output,
-      });
-    }
-  };
-
-  handleChange = e => {
-    if (e.target.checked === true) {
-      this.setState(prevState => {
-        const changeDate = moment(prevState.startDate)
-          .subtract(1, 'year')
-          .calendar();
-
-        return {
-          startDate: moment(changeDate, 'MM/DD/YYYY'),
-          endDate: moment(),
-        };
-      });
-    }
-  };
-
-  handleEndDate = e => {
     this.setState({
-      endDate: moment(e),
-    });
-  };
-  handleStartDate = e => {
-    this.setState({
-      startDate: moment(e),
+      output,
     });
   };
 
@@ -108,29 +78,19 @@ class Layout1 extends React.Component {
             </Col>
             <Col span={6}>
               <FormItem label="Start date">
-                <DatePicker
-                  value={this.state.startDate}
-                  onChange={this.handleStartDate}
-                  className="DataPicker"
-                  format="MM/DD/YYYY"
-                />
+                <DatePicker defaultValue={moment()} className="DataPicker" />
               </FormItem>
             </Col>
             <Col span={6}>
               <FormItem label="End date">
-                <DatePicker
-                  value={this.state.endDate}
-                  onChange={this.handleEndDate}
-                  className="DataPicker"
-                  format="MM/DD/YYYY"
-                />
+                <DatePicker defaultValue={moment()} className="DataPicker" />
               </FormItem>
             </Col>
           </Row>
           <Row>
             <Col span={6}>
               <FormItem>
-                <Checkbox onChange={this.handleChange}>Back</Checkbox>
+                <Checkbox>Back</Checkbox>
               </FormItem>
             </Col>
           </Row>

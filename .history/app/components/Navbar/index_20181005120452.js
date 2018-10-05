@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 
 import { Layout, Menu, Input, Button, Icon } from 'antd';
@@ -38,11 +40,10 @@ class Navbar extends React.Component {
           <Menu
             className="input_menu"
             theme="dark"
-            style={{ visibility: !this.state.visible ? 'hidden' : 'visible' }}
+            inlineCollapsed={this.state.visible}
           >
             <Menu.Item key="1">
-              <Input placeholder="Infaltion" />
-            </Menu.Item>
+              <inpu         </Menu.Item>
           </Menu>
 
           <img src={Logo} alt="Logo" />

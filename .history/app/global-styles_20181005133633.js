@@ -128,6 +128,7 @@ injectGlobal`
   display:inline-block;
   width: auto;
   color: black;
+  transidtion: 0.24s all ease-in-out;
   background: #000;
   left:3%;
   top: 65px;

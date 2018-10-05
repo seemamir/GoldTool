@@ -114,7 +114,7 @@ injectGlobal`
     border-color:black;
 }
 .input{
-  background-color:none;
+  backgroung-color:none;
   box-shadow:none;
 }
 .ant-input {
@@ -130,15 +130,10 @@ injectGlobal`
   color: black;
   background: #000;
   left:3%;
-  top: 65px;
+  top: 64px;
   z-index:5;
   li{
     padding: 0 32px
-    :hover{
-      .ant-tooltip-open{
-        display: none;
-      }
-    }
   }
 }
 `;

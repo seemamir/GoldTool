@@ -124,6 +124,7 @@ injectGlobal`
   padding: 0 32px !important;
 }
 .input_menu{
+  transition: 0.3s all ease-in-out;
   position:absolute;
   display:inline-block;
   width: auto;

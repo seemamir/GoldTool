@@ -58,11 +58,11 @@ class Layout2 extends React.Component {
       visible: false,
     });
   };
-  getOutput = () => {
+  getOutput = e => {
     const { form } = this.props;
     const euro = form.getFieldValue('euro');
     const time = form.getFieldValue('time');
-
+    console.log(euro !== undefined && euro >= 1000);
     if (euro !== undefined && euro >= 1000 && time !== undefined && time >= 4) {
       const output = euro * time;
       this.setState({
@@ -81,23 +81,11 @@ class Layout2 extends React.Component {
       open: false,
     });
   };
-
-  handleEndDate = e => {
-    this.setState({
-      endDate: moment(e),
-    });
-  };
-  handleStartDate = e => {
-    this.setState({
-      startDate: moment(e),
-    });
-  };
-
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
       <div>
-        <Form onSubmit={this.getOutput} hideRequiredMark={false}>
+        <Form onSubmit={handleSubmit} hideRequiredMark={false}>
           <Row>
             <Col span={6}>
               <FormItem label="Amount in Euro">
@@ -142,7 +130,6 @@ class Layout2 extends React.Component {
                 <DatePicker
                   value={this.state.startDate}
                   className="DataPicker"
-                  format="MM/DD/YYYY"
                   onChange={this.handleStartDate}
                 />
               </FormItem>
@@ -152,13 +139,10 @@ class Layout2 extends React.Component {
                 <DatePicker
                   value={this.state.endDate}
                   className="DataPicker"
-                  format="MM/DD/YYYY"
                   onChange={this.handleEndDate}
                 />
               </FormItem>
             </Col>
-          </Row>
-          <Row>
             <Col span={6}>
               <FormItem>
                 <Checkbox className="Check" onChange={this.handleOpen}>

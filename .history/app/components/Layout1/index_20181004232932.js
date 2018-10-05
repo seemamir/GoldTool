@@ -47,12 +47,13 @@ class Layout1 extends React.Component {
   handleChange = e => {
     if (e.target.checked === true) {
       this.setState(prevState => {
-        const changeDate = moment(prevState.startDate)
-          .subtract(1, 'year')
-          .calendar();
-
+        console.log(
+          moment()
+            .subtract(1, 'year')
+            .calendar(),
+        );
         return {
-          startDate: moment(changeDate, 'MM/DD/YYYY'),
+          startDate: moment(prevState.startDate - 1, 'MM/DD/YYYY'),
           endDate: moment(),
         };
       });
@@ -62,11 +63,6 @@ class Layout1 extends React.Component {
   handleEndDate = e => {
     this.setState({
       endDate: moment(e),
-    });
-  };
-  handleStartDate = e => {
-    this.setState({
-      startDate: moment(e),
     });
   };
 
@@ -109,8 +105,7 @@ class Layout1 extends React.Component {
             <Col span={6}>
               <FormItem label="Start date">
                 <DatePicker
-                  value={this.state.startDate}
-                  onChange={this.handleStartDate}
+                  defaultValue={this.state.startDate}
                   className="DataPicker"
                   format="MM/DD/YYYY"
                 />

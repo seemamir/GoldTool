@@ -123,7 +123,7 @@ injectGlobal`
 .ant-custom-menu-item{
   padding: 0 32px !important;
 }
-.input_menu{
+.input_men{
   position:absolute;
   display:inline-block;
   width: auto;

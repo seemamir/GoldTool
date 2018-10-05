@@ -16,14 +16,21 @@ const data = {
   ],
 };
 
+const handleSubmit = e => {
+  e.preventDefault();
+  this.props.form.validateFieldsAndScroll((err, values) => {
+    if (!err) {
+      console.log('Received values of form: ', values);
+    }
+  });
+};
+
 class Layout1 extends React.Component {
   constructor() {
     super();
     this.state = {
       timeInYears: 1,
       output: '',
-      startDate: moment(),
-      endDate: moment(),
     };
   }
 
@@ -33,40 +40,13 @@ class Layout1 extends React.Component {
     }
   };
 
-  getOutput = e => {
+  getValue = e => {
+    console.log(e.target.value);
     const { form } = this.props;
     const euro = form.getFieldValue('euro');
     const output = euro * this.state.timeInYears + Number(e.target.value);
-    if (euro !== undefined) {
-      this.setState({
-        output,
-      });
-    }
-  };
-
-  handleChange = e => {
-    if (e.target.checked === true) {
-      this.setState(prevState => {
-        const changeDate = moment(prevState.startDate)
-          .subtract(1, 'year')
-          .calendar();
-
-        return {
-          startDate: moment(changeDate, 'MM/DD/YYYY'),
-          endDate: moment(),
-        };
-      });
-    }
-  };
-
-  handleEndDate = e => {
     this.setState({
-      endDate: moment(e),
-    });
-  };
-  handleStartDate = e => {
-    this.setState({
-      startDate: moment(e),
+      output,
     });
   };
 
@@ -74,7 +54,7 @@ class Layout1 extends React.Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <div id="test">
-        <Form onSubmit={this.getOutput} hideRequiredMark={false}>
+        <Form onSubmit={handleSubmit} hideRequiredMark={false}>
           <Row>
             <Col span={6}>
               <FormItem label="Amount in Euro">
@@ -108,29 +88,19 @@ class Layout1 extends React.Component {
             </Col>
             <Col span={6}>
               <FormItem label="Start date">
-                <DatePicker
-                  value={this.state.startDate}
-                  onChange={this.handleStartDate}
-                  className="DataPicker"
-                  format="MM/DD/YYYY"
-                />
+                <DatePicker defaultValue={moment()} className="DataPicker" />
               </FormItem>
             </Col>
             <Col span={6}>
               <FormItem label="End date">
-                <DatePicker
-                  value={this.state.endDate}
-                  onChange={this.handleEndDate}
-                  className="DataPicker"
-                  format="MM/DD/YYYY"
-                />
+                <DatePicker defaultValue={moment()} className="DataPicker" />
               </FormItem>
             </Col>
           </Row>
           <Row>
             <Col span={6}>
               <FormItem>
-                <Checkbox onChange={this.handleChange}>Back</Checkbox>
+                <Checkbox>Back</Checkbox>
               </FormItem>
             </Col>
           </Row>
@@ -143,7 +113,7 @@ class Layout1 extends React.Component {
                 className="m-l-10"
                 type="primary"
                 value={0}
-                onClick={this.getOutput}
+                onClick={this.getValue}
               >
                 0
               </Button>
@@ -151,7 +121,7 @@ class Layout1 extends React.Component {
                 className="m-l-10"
                 type="primary"
                 value={25}
-                onClick={this.getOutput}
+                onClick={this.getValue}
               >
                 25
               </Button>
@@ -159,7 +129,7 @@ class Layout1 extends React.Component {
                 className="m-l-10"
                 type="primary"
                 value={50}
-                onClick={this.getOutput}
+                onClick={this.getValue}
               >
                 50
               </Button>
@@ -167,7 +137,7 @@ class Layout1 extends React.Component {
                 className="m-l-10"
                 type="primary"
                 value={75}
-                onClick={this.getOutput}
+                onClick={this.getValue}
               >
                 75
               </Button>

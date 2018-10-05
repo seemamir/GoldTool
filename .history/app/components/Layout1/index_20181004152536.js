@@ -16,65 +16,37 @@ const data = {
   ],
 };
 
+const handleSubmit = e => {
+  e.preventDefault();
+  this.props.form.validateFieldsAndScroll((err, values) => {
+    if (!err) {
+      console.log('Received values of form: ', values);
+    }
+  });
+};
+
 class Layout1 extends React.Component {
   constructor() {
     super();
     this.state = {
-      timeInYears: 1,
-      output: '',
-      startDate: moment(),
-      endDate: moment(),
+      euroError: '',
     };
   }
 
   handleEuro = (rule, value, callback) => {
+    // const { form } = this.props;
     if (value < 1000) {
+    
       callback('Amount too low');
     }
   };
-
-  getOutput = e => {
-    const { form } = this.props;
-    const euro = form.getFieldValue('euro');
-    const output = euro * this.state.timeInYears + Number(e.target.value);
-    if (euro !== undefined) {
-      this.setState({
-        output,
-      });
-    }
-  };
-
-  handleChange = e => {
-    if (e.target.checked === true) {
-      this.setState(prevState => {
-        const changeDate = moment(prevState.startDate)
-          .subtract(1, 'year')
-          .calendar();
-
-        return {
-          startDate: moment(changeDate, 'MM/DD/YYYY'),
-          endDate: moment(),
-        };
-      });
-    }
-  };
-
-  handleEndDate = e => {
-    this.setState({
-      endDate: moment(e),
-    });
-  };
-  handleStartDate = e => {
-    this.setState({
-      startDate: moment(e),
-    });
-  };
+  getValue = () => {};
 
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
       <div id="test">
-        <Form onSubmit={this.getOutput} hideRequiredMark={false}>
+        <Form onSubmit={handleSubmit} hideRequiredMark="false">
           <Row>
             <Col span={6}>
               <FormItem label="Amount in Euro">
@@ -98,39 +70,22 @@ class Layout1 extends React.Component {
             </Col>
             <Col span={6}>
               <FormItem label="Time in year">
-                <Input
-                  className="example-input"
-                  value={this.state.timeInYears}
-                  name="time"
-                  readOnly
-                />
+                <Input value="1" className="example-input" />
               </FormItem>
             </Col>
             <Col span={6}>
               <FormItem label="Start date">
-                <DatePicker
-                  value={this.state.startDate}
-                  onChange={this.handleStartDate}
-                  className="DataPicker"
-                  format="MM/DD/YYYY"
-                />
+                <DatePicker defaultValue={moment()} className="DataPicker" />
               </FormItem>
             </Col>
             <Col span={6}>
               <FormItem label="End date">
-                <DatePicker
-                  value={this.state.endDate}
-                  onChange={this.handleEndDate}
-                  className="DataPicker"
-                  format="MM/DD/YYYY"
-                />
+                <DatePicker defaultValue={moment()} className="DataPicker" />
               </FormItem>
             </Col>
-          </Row>
-          <Row>
             <Col span={6}>
               <FormItem>
-                <Checkbox onChange={this.handleChange}>Back</Checkbox>
+                <Checkbox>Back</Checkbox>
               </FormItem>
             </Col>
           </Row>
@@ -139,36 +94,16 @@ class Layout1 extends React.Component {
               <h3>Text Here</h3>
             </Col>
             <Col span={14}>
-              <Button
-                className="m-l-10"
-                type="primary"
-                value={0}
-                onClick={this.getOutput}
-              >
+              <Button className="m-l-10" type="primary">
                 0
               </Button>
-              <Button
-                className="m-l-10"
-                type="primary"
-                value={25}
-                onClick={this.getOutput}
-              >
+              <Button className="m-l-10" type="primary">
                 25
               </Button>
-              <Button
-                className="m-l-10"
-                type="primary"
-                value={50}
-                onClick={this.getOutput}
-              >
+              <Button className="m-l-10" type="primary">
                 50
               </Button>
-              <Button
-                className="m-l-10"
-                type="primary"
-                value={75}
-                onClick={this.getOutput}
-              >
+              <Button className="m-l-10" type="primary">
                 75
               </Button>
             </Col>
@@ -182,7 +117,7 @@ class Layout1 extends React.Component {
             </h3>
           </Col>
           <Col span={14}>
-            <Input readOnly defaultValue={this.state.output} />
+            <Input readOnly defaultValue="344" />
           </Col>
         </Row>
         <Row>

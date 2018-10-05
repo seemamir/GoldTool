@@ -22,8 +22,6 @@ class Layout1 extends React.Component {
     this.state = {
       timeInYears: 1,
       output: '',
-      startDate: moment(),
-      endDate: moment(),
     };
   }
 
@@ -42,32 +40,6 @@ class Layout1 extends React.Component {
         output,
       });
     }
-  };
-
-  handleChange = e => {
-    if (e.target.checked === true) {
-      this.setState(prevState => {
-        const changeDate = moment(prevState.startDate)
-          .subtract(1, 'year')
-          .calendar();
-
-        return {
-          startDate: moment(changeDate, 'MM/DD/YYYY'),
-          endDate: moment(),
-        };
-      });
-    }
-  };
-
-  handleEndDate = e => {
-    this.setState({
-      endDate: moment(e),
-    });
-  };
-  handleStartDate = e => {
-    this.setState({
-      startDate: moment(e),
-    });
   };
 
   render() {
@@ -109,8 +81,7 @@ class Layout1 extends React.Component {
             <Col span={6}>
               <FormItem label="Start date">
                 <DatePicker
-                  value={this.state.startDate}
-                  onChange={this.handleStartDate}
+                  defaultValue={moment()}
                   className="DataPicker"
                   format="MM/DD/YYYY"
                 />
@@ -119,8 +90,7 @@ class Layout1 extends React.Component {
             <Col span={6}>
               <FormItem label="End date">
                 <DatePicker
-                  value={this.state.endDate}
-                  onChange={this.handleEndDate}
+                  defaultValue={moment()}
                   className="DataPicker"
                   format="MM/DD/YYYY"
                 />
@@ -130,7 +100,7 @@ class Layout1 extends React.Component {
           <Row>
             <Col span={6}>
               <FormItem>
-                <Checkbox onChange={this.handleChange}>Back</Checkbox>
+                <Checkbox>Back</Checkbox>
               </FormItem>
             </Col>
           </Row>

@@ -36,7 +36,11 @@ class Navbar extends React.Component {
             style={{ marginRight: '30px', color: 'white', fontSize: '22px' }}
           />
           <Menu
-            className="input_menu"
+            className={
+              'input_menu' + this.state.visible
+                ? 'input-menu-open'
+                : 'input-menu-hide'
+            }
             theme="dark"
             style={{ visibility: !this.state.visible ? 'hidden' : 'visible' }}
           >

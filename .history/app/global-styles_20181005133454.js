@@ -124,6 +124,7 @@ injectGlobal`
   padding: 0 32px !important;
 }
 .input_menu{
+  visibility: visible;
   position:absolute;
   display:inline-block;
   width: auto;

@@ -36,14 +36,23 @@ class Navbar extends React.Component {
             style={{ marginRight: '30px', color: 'white', fontSize: '22px' }}
           />
           <Menu
+            className={this.state.visible ? 'input-menu' : 'input-menu-hide'}
+          >
+            <Menu.Item key="0">
+              <Input placeholder="text" />
+            </Menu.Item>
+            <Menu.Item key="3">3rd menu item</Menu.Item>
+          </Menu>
+          {/* <Menu
             className="input_menu"
             theme="dark"
+            inlineCollapsed={this.state.visible}
             style={{ visibility: !this.state.visible ? 'hidden' : 'visible' }}
           >
             <Menu.Item key="1">
               <Input placeholder="Infaltion" />
             </Menu.Item>
-          </Menu>
+          </Menu> */}
 
           <img src={Logo} alt="Logo" />
         </Header>

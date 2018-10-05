@@ -62,7 +62,10 @@ class Layout2 extends React.Component {
     const { form } = this.props;
     const euro = form.getFieldValue('euro');
     const time = form.getFieldValue('time');
-
+    console.log(euro, time);
+    console.log(
+      euro !== undefined && euro >= 1000 && time !== undefined && time >= 4,
+    );
     if (euro !== undefined && euro >= 1000 && time !== undefined && time >= 4) {
       const output = euro * time;
       this.setState({

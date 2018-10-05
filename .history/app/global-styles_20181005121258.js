@@ -114,14 +114,8 @@ injectGlobal`
     border-color:black;
 }
 .input{
-  background-color:none;
+  backgroung-color:none;
   box-shadow:none;
-}
-.ant-input {
-  transition: 0s all ease-in-out;
-}
-.ant-custom-menu-item{
-  padding: 0 32px !important;
 }
 .input_menu{
   position:absolute;
@@ -134,11 +128,6 @@ injectGlobal`
   z-index:5;
   li{
     padding: 0 32px
-    :hover{
-      .ant-tooltip-open{
-        display: none;
-      }
-    }
   }
 }
 `;

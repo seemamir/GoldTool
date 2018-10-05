@@ -85,6 +85,17 @@ injectGlobal`
       box-shadow:none;
     }
   }
+  .input-item{
+  }
+
+  .gutter-example .ant-row > div {
+    background: transparent;
+    border: 0;
+  }
+  .gutter-box {
+    background: #00A0E9;
+    padding: 5px 0;
+  }
 
   .Output{
     margin-top:30px;
@@ -106,39 +117,12 @@ injectGlobal`
   .has-error .ant-input:not([disabled]):hover{
     border-color:none;
   }
-  .ant-layout-header .ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected{
-    background-color: transparent !important;
-  }
   .ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected:active{
     background-color: none;
     border-color:black;
 }
 .input{
-  background-color:none;
+  backgroung-color:none;
   box-shadow:none;
-}
-.ant-input {
-  transition: 0s all ease-in-out;
-}
-.ant-custom-menu-item{
-  padding: 0 32px !important;
-}
-.input_menu{
-  position:absolute;
-  display:inline-block;
-  width: auto;
-  color: black;
-  background: #000;
-  left:3%;
-  top: 65px;
-  z-index:5;
-  li{
-    padding: 0 32px
-    :hover{
-      .ant-tooltip-open{
-        display: none;
-      }
-    }
-  }
 }
 `;
