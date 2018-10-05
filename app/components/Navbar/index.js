@@ -14,16 +14,22 @@ const menu = (
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { visible: false };
+    this.state = {
+      visible: false,
+      inflation: '',
+    };
   }
 
   toggleCollapsed = () => {
-    this.setState(
-      {
-        visible: !this.state.visible,
-      },
-      () => console.log(this.state),
-    );
+    this.setState({
+      visible: !this.state.visible,
+    });
+  };
+
+  handleChange = e => {
+    this.setState({
+      inflation: e.target.value,
+    });
   };
 
   render() {
@@ -41,7 +47,12 @@ class Navbar extends React.Component {
             style={{ visibility: !this.state.visible ? 'hidden' : 'visible' }}
           >
             <Menu.Item key="1">
-              <Input placeholder="Infaltion" />
+              <Input
+                placeholder="Inflation"
+                name="inflation"
+                value={this.state.inflation}
+                onChange={this.handleChange}
+              />
             </Menu.Item>
           </Menu>
 
