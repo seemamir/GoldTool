@@ -4,18 +4,6 @@ import { Bar, Line } from 'react-chartjs-2';
 import { Input, Checkbox, DatePicker, Form, Row, Col, Button } from 'antd';
 const FormItem = Form.Item;
 
-const data = {
-  labels: ['past', 'present', 'future'],
-  datasets: [
-    {
-      label: 'Gold price',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [10, 30, 50, 95, 20, 30, 45],
-    },
-  ],
-};
-
 class Layout1 extends React.Component {
   constructor() {
     super();
@@ -72,6 +60,35 @@ class Layout1 extends React.Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    const past = moment(this.state.startDate)
+      .subtract(1, 'year')
+      .calendar();
+    const present = moment(this.state.startDate).format('MM/DD/YYYY');
+    const future = moment(this.state.startDate)
+      .add(1, 'year')
+      .calendar();
+    const data = {
+      labels: [past, present, future],
+      datasets: [
+        {
+          label: 'Gold price',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: [30, 50, 95],
+        },
+      ],
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      },
+    };
     return (
       <div id="test">
         <Form onSubmit={this.getOutput} hideRequiredMark={false}>
