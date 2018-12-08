@@ -6,7 +6,6 @@
 
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
-import Contentwrapper from 'components/Contentwrapper/Loadable';
 import { Link } from 'react-router-dom';
 import Logo from '../../images/footer.png';
 const { Sider } = Layout;
@@ -35,11 +34,6 @@ class Sidebar extends React.Component {
           <Menu.Item key="3">
             <Link to="/layout3">
               <Icon type="bar-chart" theme="outlined" />BGK+(mit 99 option)
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="4">
-            <Link to="/">
-              <Icon type="bar-chart" theme="outlined" />Direkt Goldauf
             </Link>
           </Menu.Item>
         </Menu>

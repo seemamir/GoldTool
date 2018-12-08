@@ -5,6 +5,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
@@ -17,9 +18,12 @@ import injectReducer from 'utils/injectReducer';
 import Layout1 from '../../components/Layout1/Loadable';
 
 import makeSelectFirstLayout from './selectors';
+import { inflationValue } from '../Header/actions';
+import makeSelectHeader from '../Header/selectors';
 import reducer from './reducer';
 import saga from './saga';
 const { Content } = Layout;
+
 /* eslint-disable react/prefer-stateless-function */
 export class FirstLayout extends React.Component {
   render() {
@@ -39,7 +43,10 @@ export class FirstLayout extends React.Component {
               minHeight: 280,
             }}
           >
-            <Layout1 />
+            <Layout1
+              inflationValue={this.props.inflationValue}
+              resetInflation={this.props.resetInflation}
+            />
           </Content>
         </Layout>
       </div>
@@ -47,15 +54,20 @@ export class FirstLayout extends React.Component {
   }
 }
 
-FirstLayout.propTypes = {};
+FirstLayout.propTypes = {
+  inflationValue: PropTypes.object,
+  resetInflation: PropTypes.func,
+};
 
 const mapStateToProps = createStructuredSelector({
   firstlayout: makeSelectFirstLayout(),
+  inflationValue: makeSelectHeader(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    resetInflation: payload => dispatch(inflationValue(payload)),
   };
 }
 

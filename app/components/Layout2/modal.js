@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Button } from 'antd';
 
 const Msg = props => (
@@ -7,7 +8,7 @@ const Msg = props => (
       visible={props.visible}
       onCancel={props.cancel}
       footer={[
-        <Button key="back" onClick={props.cancel}>
+        <Button key="back" onClick={props.agree}>
           Bestaetigen
         </Button>,
       ]}
@@ -17,4 +18,9 @@ const Msg = props => (
   </div>
 );
 
+Msg.propTypes = {
+  visible: PropTypes.bool,
+  cancel: PropTypes.func,
+  agree: PropTypes.func,
+};
 export default Msg;

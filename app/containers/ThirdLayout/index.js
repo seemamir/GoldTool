@@ -18,6 +18,9 @@ import Layout3 from '../../components/Layout3/Loadable';
 import makeSelectThirdLayout from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import makeSelectHeader from '../Header/selectors';
+import { inflationValue } from '../Header/actions';
+
 const { Content } = Layout;
 
 /* eslint-disable react/prefer-stateless-function */
@@ -41,7 +44,10 @@ export class ThirdLayout extends React.Component {
               minHeight: 280,
             }}
           >
-            <Layout3 />
+            <Layout3
+              inflationValue={this.props.inflationValue}
+              resetInflation={this.props.resetInflation}
+            />
           </Content>
         </Layout>
       </div>
@@ -53,11 +59,13 @@ ThirdLayout.propTypes = {};
 
 const mapStateToProps = createStructuredSelector({
   thirdlayout: makeSelectThirdLayout(),
+  inflationValue: makeSelectHeader(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    resetInflation: payload => dispatch(inflationValue(payload)),
   };
 }
 

@@ -8,7 +8,7 @@ import { fromJS } from 'immutable';
 import { DEFAULT_ACTION, INFLATION_VALUE } from './constants';
 
 export const initialState = fromJS({
-  inflation: '',
+  inflation: null,
 });
 
 function headerReducer(state = initialState, action) {

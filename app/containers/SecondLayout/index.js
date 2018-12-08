@@ -10,8 +10,12 @@ import injectReducer from 'utils/injectReducer';
 import { Layout } from 'antd';
 import Layout2 from '../../components/Layout2/Loadable';
 import makeSelectSecondLayout from './selectors';
+import makeSelectHeader from '../Header/selectors';
+
 import reducer from './reducer';
 import saga from './saga';
+import { inflationValue } from '../Header/actions';
+
 const { Content } = Layout;
 
 /* eslint-disable react/prefer-stateless-function */
@@ -35,7 +39,10 @@ export class SecondLayout extends React.Component {
               minHeight: 280,
             }}
           >
-            <Layout2 />
+            <Layout2
+              inflationValue={this.props.inflationValue}
+              resetInflation={this.props.resetInflation}
+            />
           </Content>
         </Layout>
       </div>
@@ -43,17 +50,17 @@ export class SecondLayout extends React.Component {
   }
 }
 
-SecondLayout.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-};
+SecondLayout.propTypes = {};
 
 const mapStateToProps = createStructuredSelector({
   secondlayout: makeSelectSecondLayout(),
+  inflationValue: makeSelectHeader(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    resetInflation: payload => dispatch(inflationValue(payload)),
   };
 }
 

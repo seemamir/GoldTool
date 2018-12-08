@@ -141,4 +141,13 @@ injectGlobal`
     }
   }
 }
+.show{
+  visibility: visible;
+  display: block
+  
+}
+.hide{
+  display: none;
+  visibility: hidden
+}
 `;

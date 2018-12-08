@@ -42,7 +42,9 @@ export class Navbar extends React.Component {
       {
         inflation: e.target.value,
       },
-      () => this.props.inflationValue(this.state.inflation),
+      () => {
+        this.props.inflationValue(this.state.inflation);
+      },
     );
   };
   render() {
@@ -63,6 +65,7 @@ export class Navbar extends React.Component {
               <Input
                 placeholder="Inflation"
                 name="inflation"
+                type="number"
                 value={this.state.inflation}
                 onChange={this.handleChange}
               />

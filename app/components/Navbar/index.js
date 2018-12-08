@@ -52,6 +52,7 @@ class Navbar extends React.Component {
                 name="inflation"
                 value={this.state.inflation}
                 onChange={this.handleChange}
+                type="number"
               />
             </Menu.Item>
           </Menu>
